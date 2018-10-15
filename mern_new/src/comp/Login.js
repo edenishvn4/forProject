@@ -51,7 +51,7 @@ class Login extends Component {
               { message }
             </div>
           }
-          <h2 className="form-signin-heading">Please sign in</h2>
+          <h2 className="form-signin-heading">Please Sign In</h2>
           <label htmlFor="inputEmail" className="sr-only">username</label>
           <input type="text" className="form-control" placeholder="Username" name="username" value={username} onChange={this.onChange} required/>
           <label htmlFor="inputPassword" className="sr-only">Password</label>
