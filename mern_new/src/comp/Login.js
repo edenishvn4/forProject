@@ -28,7 +28,7 @@ class Login extends Component {
       .then((result) => {
         localStorage.setItem('jwtToken', result.data.token);
         this.setState({ message: '' });
-        if(this.state.username==='admin'){
+        if(this.state.username==='don'){
           this.props.history.push('/');
         }else{
           this.props.history.push('/home')

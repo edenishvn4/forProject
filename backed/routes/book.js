@@ -3,20 +3,11 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Book = require('../models/Book.js');
 var passport = require('passport');
+var bookget = require('../controllers/bookget')
 require('../config/passport')(passport);
 
 /* GET ALL BOOKS */
-router.get('/', passport.authenticate('jwt', { session: false}), function(req, res) {
-    var token = getToken(req.headers);
-    if (token) {
-      Book.find(function (err, books) {
-        if (err) return next(err);
-        res.json(books);
-      });
-    } else {
-      return res.status(403).send({success: false, msg: 'Unauthorized.'});
-    }
-  });
+router.get('/', passport.authenticate('jwt', { session: false}),bookget.book_list);
 
   /* GET SINGLE BOOK BY ID */
   router.get('/:id', passport.authenticate('jwt', { session: false}), function(req, res) {

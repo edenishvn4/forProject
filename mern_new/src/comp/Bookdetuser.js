@@ -11,8 +11,9 @@ class Bookdetuser extends Component {
       book: {},
       usrnm:'',
       messg:'',
-      quan:0
+      myquan:0
     };
+    this.quan = React.createRef();
   }
 
   componentDidMount() {
@@ -34,10 +35,11 @@ class Bookdetuser extends Component {
     var username=this.state.usrnm;
     var title=this.state.book.title;
     var description=this.state.book.description;
-    var qty=this.state.quan;
+    var qty=this.state.myquan;
     var price =this.state.book.price;
     var isbn = this.state.book.isbn
     var stock = this.state.book.stock
+    console.log(qty)
     if(qty<=0){
       this.setState({messg:'the value is invalid'})
     }else{
@@ -69,7 +71,7 @@ class Bookdetuser extends Component {
   //   console.log(e.target.value)
   // }
   klik(){
-    this.setState({quan: this.refs.quan.value});
+    this.setState({myquan: this.quan.current.value});
   }
   render() {
     var pr=this.state.book.price
@@ -103,17 +105,17 @@ class Bookdetuser extends Component {
             </dl>
           </div>
           <div className="panel-footer">
-          <div className="text-right">
-          <form className="form-inline">
-            <div className="form-group mx-sm-3 mb-2 row">
-            <div className="col">
-              <label htmlFor="inputQty">Qty: </label>
-              <input type="number" ref="quan" style={{width:100,marginLeft:10}} className="form-control" onInput={()=>{this.klik();}} placeholder="qty"/>
-            <button onClick={()=>{this.klik2();}} style={{marginLeft:10}} className="btn btn-primary mb-2">Add To Cart</button> 
+            <div className="text-right">
+            <div className="form-inline">
+              <div className="form-group mx-sm-3 mb-2 row">
+              <div className="col">
+                <label htmlFor="inputQty">Qty: </label>
+                <input type="number" ref={this.quan} style={{width:100,marginLeft:10}} className="form-control" onInput={()=>{this.klik();}} placeholder="qty"/>
+                <button onClick={()=>{this.klik2();}} style={{marginLeft:10}} className="btn btn-primary mb-2">Add To Cart</button> 
+              </div>
+              </div>
             </div>
             </div>
-          </form>
-          </div>
           </div>
         </div>
         {messg !== '' &&
@@ -121,7 +123,7 @@ class Bookdetuser extends Component {
               { messg }
             </div>
           }
-      </div>
+    </div>
     );
   }
 }

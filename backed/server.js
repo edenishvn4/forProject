@@ -11,7 +11,7 @@ var hist = require('./routes/hist');
 var app = express();
 
 const cors = require('cors');
-const url = process.env.MONGOLAB_URI //'mongodb://expirs:291189@localhost:27017/mern-new'
+const url =  'mongodb://expirs:291189@localhost:27017/mern-new'
 
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');

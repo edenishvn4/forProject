@@ -70,6 +70,7 @@ class App extends Component {
                   <th>Author</th>
                   <th>Price</th>
                   <th>Stock</th>
+                  <th>  </th>
                 </tr>
               </thead>
               <tbody>
@@ -78,11 +79,12 @@ class App extends Component {
                   var strnum=num(pr).format('0,0')
                   return(
                     <tr key={index}>
-                    <td><Link to={`/show/${book._id}`}>{book.isbn}</Link></td>
+                    <td>{book.isbn}</td>
                     <td>{book.title}</td>
                     <td>{book.author}</td>
                     <td>Rp {strnum},-</td>
                     <td>{book.stock}</td>
+                    <td><Link to={`/show/${book._id}`}><button className="btn btn-success">View</button></Link></td>
                   </tr>
                   )
                 })}
